@@ -3,7 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import css from "./OrderSheet.module.css";
 
 import { selectShoppingCart } from "../../redux/selectors";
-import { changeCountById, removeProductCart } from "../../redux/slice";
+import {
+  changeCountById,
+  removeProductCart,
+  setShopIdToOrder,
+} from "../../redux/slice";
 const OrderSheet = () => {
   const shopCart = useSelector(selectShoppingCart);
 
@@ -16,6 +20,7 @@ const OrderSheet = () => {
 
   const handleDeleteProductFromCart = (id) => {
     dispatch(removeProductCart(id));
+    dispatch(setShopIdToOrder(""));
   };
   return (
     <div className={css.container}>
@@ -23,8 +28,8 @@ const OrderSheet = () => {
         {shopCart.map(({ id, name, price, count }) => (
           <li key={id} className={css.cart}>
             <img
-              src="#"
-              alt=""
+              src="https://placehold.co/150x95"
+              alt={name}
               style={{
                 width: "150px",
                 height: "95px",

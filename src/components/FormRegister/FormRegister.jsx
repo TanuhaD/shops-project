@@ -15,7 +15,7 @@ import {
   changePhone,
   resetData,
 } from "../../redux/user/userSlice";
-import { resetShopingCart } from "../../redux/slice";
+import { resetShopingCart, setShopIdToOrder } from "../../redux/slice";
 
 const FormRegister = ({ total }) => {
   const dispatch = useDispatch();
@@ -43,6 +43,7 @@ const FormRegister = ({ total }) => {
     console.log(saveLocal);
     dispatch(resetShopingCart());
     dispatch(resetData());
+    dispatch(setShopIdToOrder(""));
   };
   const handleChangeName = (e) => {
     dispatch(changeName(e.target.value));

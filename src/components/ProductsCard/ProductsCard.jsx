@@ -1,16 +1,22 @@
 import React, { useState } from "react";
 import css from "./ProductsCard.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { selectShopProducts, selectShoppingCart } from "../../redux/selectors";
-import { addToCart } from "../../redux/slice";
-const ProductsCard = ({ choiceShop }) => {
+import {
+  selectChosenShopId,
+  selectShopProducts,
+  selectShoppingCart,
+} from "../../redux/selectors";
+import { addToCart, setShopIdToOrder } from "../../redux/slice";
+const ProductsCard = () => {
   const dispatch = useDispatch();
+  const choiceShop = useSelector(selectChosenShopId);
   const shoppingCart = useSelector(selectShoppingCart);
   const shopProducts = useSelector(selectShopProducts);
   const chosenShopProducts = shopProducts.find((product) => {
     return product.id === choiceShop;
   });
   const handleAddProduct = (id, name, price) => {
+    dispatch(setShopIdToOrder(choiceShop));
     dispatch(addToCart({ id, name, price, count: 1 }));
   };
   return (
@@ -22,8 +28,8 @@ const ProductsCard = ({ choiceShop }) => {
             <li key={id} className={css.cart}>
               <img
                 className={css.img}
-                src="#"
-                alt=""
+                src="https://placehold.co/120x60"
+                alt={name}
                 style={{
                   width: "120px",
                   height: "60px",

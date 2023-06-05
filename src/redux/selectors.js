@@ -9,3 +9,11 @@ export const selectShopProducts = (state) => {
 export const selectShoppingCart = (state) => {
   return state.shopsStore.shoppingCart;
 };
+
+export const selectChosenShopId = (state) => {
+  return state.shopsStore.chosenShopId;
+};
+
+export const selectShopIdToOrder = (state) => {
+  return state.shopsStore.shopIdToOrder;
+};

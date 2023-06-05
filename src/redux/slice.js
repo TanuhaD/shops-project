@@ -4,6 +4,8 @@ import { getShops } from "./shopsOperations";
 const shopsSlice = createSlice({
   name: "shops",
   initialState: {
+    chosenShopId: "",
+    shopIdToOrder: "",
     shops: [],
     shopProducts: [],
     shoppingCart: [],
@@ -32,6 +34,12 @@ const shopsSlice = createSlice({
     resetShopingCart: (state) => {
       return { ...state, shoppingCart: [] };
     },
+    setChosenShopId: (state, { payload }) => {
+      return { ...state, chosenShopId: payload };
+    },
+    setShopIdToOrder: (state, { payload }) => {
+      return { ...state, shopIdToOrder: payload };
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -57,5 +65,7 @@ export const {
   addTotal,
   changeCountById,
   resetShopingCart,
+  setChosenShopId,
+  setShopIdToOrder,
 } = shopsSlice.actions;
 export const shopsReducer = shopsSlice.reducer;
