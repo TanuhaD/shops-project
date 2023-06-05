@@ -1,0 +1,64 @@
+.container {
+  padding: 20px;
+  width: 620px;
+  box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  overflow-y: scroll;
+}
+
+.listCart {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -15px;
+}
+.cart {
+  width: 260px;
+  height: 220px;
+  margin: 15px;
+  padding: 20px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
+}
+
+.img {
+  display: block;
+  width: 80px;
+  height: 40px;
+  margin-bottom: 10px;
+  border: "1px";
+  border-radius: 3px;
+}
+
+.text {
+  margin-bottom: 5px;
+}
+
+.price {
+  margin-bottom: 20px;
+}
+
+.btn {
+  width: 150px;
+  height: 40px;
+  margin-left: 70px;
+  background-color: #ede6f4;
+  box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: #373737;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #c2b9cd;
+}

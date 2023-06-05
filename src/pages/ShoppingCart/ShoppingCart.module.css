@@ -1,0 +1,21 @@
+.container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  width: 900px;
+  height: 550px;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
+}
+
+.total {
+  position: absolute;
+  top: 600px;
+  left: 600px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.2;
+}
