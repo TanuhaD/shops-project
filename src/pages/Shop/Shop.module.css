@@ -1,8 +1,8 @@
 .container {
   display: flex;
   justify-content: space-between;
-  width: 900px;
-  height: 350px;
+
+  height: 80vh;
   margin-top: 50px;
   padding: 30px;
   border-radius: 5px;

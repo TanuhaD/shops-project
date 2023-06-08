@@ -28,17 +28,18 @@ const OrderSheet = () => {
         {shopCart.map(({ id, name, price, count }) => (
           <li key={id} className={css.cart}>
             <img
-              src="https://placehold.co/150x95"
+              src="https://placehold.co/300x150"
               alt={name}
               style={{
-                width: "150px",
-                height: "95px",
-                border: "1px",
+                width: "300px",
+                height: "150px",
+                border: "1px solid grey",
+                borderRadius: "5px",
               }}
             />
             <div className={css.wrapper}>
               <p className={css.text}>{name}</p>
-              <p className={css.text}>{price}</p>
+              <p className={css.text}>{price}$</p>
               <input
                 type="number"
                 min="0"

@@ -5,12 +5,18 @@ const NavMenu = () => {
   return (
     <header className={css.header}>
       <nav>
-        <NavLink to="/" className={css.headerShop}>
+        <NavLink to="/" className={css.link}>
           Shop
         </NavLink>
 
-        <NavLink to="/shopping" className={css.headerCart}>
+        <NavLink to="/shopping" className={css.link}>
           Shopping Cart
+        </NavLink>
+        <NavLink to="/history" className={css.link}>
+          History
+        </NavLink>
+        <NavLink to="/coupons" className={css.link}>
+          Coupons
         </NavLink>
       </nav>
     </header>
