@@ -9,6 +9,7 @@ const shopsSlice = createSlice({
     shops: [],
     shopProducts: [],
     shoppingCart: [],
+    discount: 0,
   },
   reducers: {
     addToCart: (state, action) => {
@@ -40,6 +41,9 @@ const shopsSlice = createSlice({
     setShopIdToOrder: (state, { payload }) => {
       return { ...state, shopIdToOrder: payload };
     },
+    setDiscount: (state, { payload }) => {
+      return { ...state, discount: payload };
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -67,5 +71,6 @@ export const {
   resetShopingCart,
   setChosenShopId,
   setShopIdToOrder,
+  setDiscount,
 } = shopsSlice.actions;
 export const shopsReducer = shopsSlice.reducer;

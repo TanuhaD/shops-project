@@ -13,3 +13,7 @@ export const selectUserPhone = (state) => {
 export const selectUserAdress = (state) => {
   return state.user.adress;
 };
+
+export const selectUserError = (state) => {
+  return state.user.error;
+};

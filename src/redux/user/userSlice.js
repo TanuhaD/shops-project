@@ -4,6 +4,7 @@ const initialState = {
   email: "",
   phone: "",
   adress: "",
+  error: false,
 };
 
 const userSlice = createSlice({
@@ -23,9 +24,20 @@ const userSlice = createSlice({
     changeAdress: (state, { payload }) => {
       return { ...state, adress: payload };
     },
-    resetData: () => initialState,
+    resetData: () => {
+      return initialState;
+    },
+    setError: (state, { payload }) => {
+      return { ...state, error: payload };
+    },
   },
 });
-export const { changeName, changeEmail, changePhone, changeAdress, resetData } =
-  userSlice.actions;
+export const {
+  changeName,
+  changeEmail,
+  changePhone,
+  changeAdress,
+  resetData,
+  setError,
+} = userSlice.actions;
 export const userReducer = userSlice.reducer;

@@ -17,3 +17,7 @@ export const selectChosenShopId = (state) => {
 export const selectShopIdToOrder = (state) => {
   return state.shopsStore.shopIdToOrder;
 };
+
+export const selectDiscount = (state) => {
+  return state.shopsStore.discount;
+};

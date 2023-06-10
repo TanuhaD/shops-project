@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import css from "./ButtonTotal.module.css";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import Modal from "react-modal";
+import { useSelector } from "react-redux";
+import { couponList } from "../../pages/Coupons/Coupons";
+import { selectDiscount, selectShoppingCart } from "../../redux/selectors";
 import {
   selectUserAdress,
   selectUserEmail,
+  selectUserError,
   selectUserName,
   selectUserPhone,
 } from "../../redux/user/userSelectors";
-import { selectShoppingCart } from "../../redux/selectors";
-import { resetShopingCart, setShopIdToOrder } from "../../redux/slice";
-import { resetData } from "../../redux/user/userSlice";
-import Modal from "react-modal";
-import { couponList } from "../../pages/Coupons/Coupons";
+import css from "./ButtonTotal.module.css";
+import { setDiscount } from "../../redux/slice";
 Modal.setAppElement("#modal");
 const customStyles = {
   content: {
@@ -27,16 +27,16 @@ const customStyles = {
   },
 };
 
-const ButtonTotal = ({ total }) => {
-  const dispatch = useDispatch();
-  const [discount, setDiscount] = useState();
+const ButtonTotal = ({ total, setCloseModalFoo }) => {
+  const discount = useSelector(selectDiscount);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const name = useSelector(selectUserName);
   const email = useSelector(selectUserEmail);
   const phone = useSelector(selectUserPhone);
   const adress = useSelector(selectUserAdress);
   const shoppingCart = useSelector(selectShoppingCart);
-  const disabled = !total || !name || !email || !phone || !adress;
+  const error = useSelector(selectUserError);
+  const disabled = !total || !name || !email || !phone || !adress || error;
 
   const handleInputChange = (e) => {
     couponList.forEach((coupon) => {
@@ -45,39 +45,16 @@ const ButtonTotal = ({ total }) => {
       }
     });
   };
-  function openModal() {
-    setModalIsOpen(true);
-  }
-
   function closeModal() {
     setModalIsOpen(false);
+  }
+  function openModal() {
+    setCloseModalFoo(() => closeModal);
+    setModalIsOpen(true);
   }
 
   const handleSubmitClick = () => {
     openModal();
-  };
-  const confirmOrder = () => {
-    const oldOrders = JSON.parse(localStorage.getItem("register")) || [];
-    localStorage.setItem(
-      "register",
-      JSON.stringify([
-        ...oldOrders,
-        {
-          name,
-          email,
-          phone,
-          adress,
-          shoppingCart,
-          total,
-          discount,
-          finalPrice: (total * (1 - discount / 100)).toFixed(2),
-        },
-      ])
-    );
-    dispatch(resetShopingCart());
-    dispatch(resetData());
-    dispatch(setShopIdToOrder(""));
-    closeModal();
   };
   return (
     <div className={css.container}>
@@ -133,7 +110,7 @@ const ButtonTotal = ({ total }) => {
           ))}
         </ul>
 
-        <button onClick={confirmOrder} className={css.modalBtn}>
+        <button type="submit" form="myForm" className={css.modalBtn}>
           Confirm order
         </button>
         <button onClick={closeModal} className={css.modalBtn}>
